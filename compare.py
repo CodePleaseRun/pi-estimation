@@ -10,10 +10,6 @@ POINTS = 2**POW
 PI = 3.1415926535
 POINTS_PER_FRAME = 2**4  # must be a power of 2
 POINT_SPACING = int(POINTS/POINTS_PER_FRAME)
-RAND_LIST_1 = list(np.linspace(0, 1, POINTS))
-RAND_LIST_2 = RAND_LIST_1[:]
-random.shuffle(RAND_LIST_1)
-random.shuffle(RAND_LIST_2)
 
 
 def generate_sobol():
@@ -27,9 +23,7 @@ def generate_sobol():
 
 
 def pseudo_points():
-    x = RAND_LIST_1.pop()
-    y = RAND_LIST_2.pop()
-    return x, y
+    return random.random(), random.random()
 
 
 def quasi_points(sobol_points):

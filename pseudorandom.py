@@ -8,16 +8,10 @@ PI = 3.1415926535
 POINTS = 20_000
 POINTS_PER_FRAME = 20
 POINT_SPACING = int(POINTS/POINTS_PER_FRAME)
-RAND_LIST_1 = list(np.linspace(-1, 1, POINTS))
-RAND_LIST_2 = RAND_LIST_1[:]
-random.shuffle(RAND_LIST_1)
-random.shuffle(RAND_LIST_2)
 
 
 def get_random_points():
-    x = RAND_LIST_1.pop()
-    y = RAND_LIST_2.pop()
-    return x, y
+    return random.random()*random.choice([-1, 1]), random.random()*random.choice([-1, 1])
 
 
 def init_plot(line, ax):
