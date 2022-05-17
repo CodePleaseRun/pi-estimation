@@ -2,11 +2,23 @@
 
 <br>
 
+<h3>Using pseudorandom points</h3>
 
+<br>
 
-https://user-images.githubusercontent.com/57635525/168703643-4fcc966e-c095-41e2-8b3e-ed39f3b7883d.mp4
+https://user-images.githubusercontent.com/57635525/168823861-2fb38285-60db-4f7f-ba70-035af0ae7005.mp4
 
+<h3>Using quasirandom points (Sobol sequence)</h3>
 
+<br>
+
+https://user-images.githubusercontent.com/57635525/168816164-6fe98001-860a-4cf4-a762-8d9d0b7948ca.mp4
+
+<h3>Convergence of pseudorandom points & quasirandom points</h3>
+
+<br>
+
+https://user-images.githubusercontent.com/57635525/168816208-901ead94-7713-420f-9fee-b2a2ca96242c.mp4
 
 <br>
 
@@ -21,20 +33,28 @@ cd pi-estimation
 
 - `matplotlib`
 - `numpy`
+- `scipy`
 
 <br>
 <h2>Usage</h2>
 
-```python
-python estimatepi.py
-```
+- Using pseudorandom points
 
-- Number of points simulated can be changed by changing the value of `POINTS` global variable
-- `POINTS_PER_FRAME` decides how many points will be animated in each fram, i.e., how many points will be aimated everytime `update_func()` is called
-- Setting `POINTS_PER_FRAME` to a high value will animate graph faster but it will also make the animating "choppy" or "laggy"
-- Restrictions on `POINT_PER_FRAME`:
-  - `POINT_PER_FRAME` < `POINTS` < `POINTS`
-  - `POINTS_PER_FRAME` must be a factor of `POINTS`
+  ```bash
+  python pseudorandom.py
+  ```
+
+- Using quasirandom points
+
+  ```bash
+  python quasirandom.py
+  ```
+
+- Comparing the two
+
+  ```bash
+  python compare.py
+  ```
 
 <br>
 
