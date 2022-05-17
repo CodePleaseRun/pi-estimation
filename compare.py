@@ -10,7 +10,7 @@ POINTS = 2**POW
 PI = 3.1415926535
 POINTS_PER_FRAME = 2**4  # must be a power of 2
 POINT_SPACING = int(POINTS/POINTS_PER_FRAME)
-RAND_LIST_1 = list(np.linspace(-1, 1, POINTS))
+RAND_LIST_1 = list(np.linspace(0, 1, POINTS))
 RAND_LIST_2 = RAND_LIST_1[:]
 random.shuffle(RAND_LIST_1)
 random.shuffle(RAND_LIST_2)
@@ -105,8 +105,6 @@ def update_func(frame, pseudo_plot_detail, quasi_plot_detail, graph):
     quasi_pg_y = quasi_pi_graph['y'][:frame]
     quasi_cg_x = quasi_circle_graph['x'][:frame]
     quasi_cg_y = quasi_circle_graph['y'][:frame]
-
-    print(f'{len(quasi_cg_y)==len(pseudo_cg_y) = }')
 
     pseudo_pi = pseudo_pg_y[-1]
     quasi_pi = quasi_pg_y[-1]
@@ -216,7 +214,7 @@ if __name__ == '__main__':
                         init_func=lambda: init_plot(line, ax),
                         blit=False,
                         repeat=False,
-                        interval=50)
+                        interval=10)
 
     plt.rcParams.update({'font.size': 13, 'font.weight': 'bold'})
     plt.tight_layout()
