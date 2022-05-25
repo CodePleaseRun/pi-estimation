@@ -21,10 +21,6 @@ def generate_sobol():
     return points
 
 
-def quasi_points(sobol_points):
-    return sobol_points['x'].pop(), sobol_points['y'].pop()
-
-
 def init_plot(line, ax):
     """
     Initializes the animation plot
@@ -86,7 +82,7 @@ def update_func(frame, quasi_plot_detail, graph):
     return line
 
 
-def get_plot_details(**kwargs):
+def get_plot_details(sobol):
     """
     Simulates all the points & calculates the estimated value
     before the animation begins
@@ -98,17 +94,12 @@ def get_plot_details(**kwargs):
         'sobol': an array of 2D sobol points
                 Required if `func`= quasi_points
     """
-    sobol_points = kwargs.get('sobol', None)
-    func = kwargs.get('func', None)  # funct to use for random point generation
     sc_list = []  # array of colors for scatter plot points
-    points_in_circle = 0  # count of number of points in circle
+    points_in_circle = 0
     circle_graph = {'x': [], 'y': []}
     pi_graph = {'x': [], 'y': []}
     for point_cumulative in range(1, POINTS+1):
-        if sobol_points is None:
-            point_x, point_y = func()
-        else:
-            point_x, point_y = func(sobol_points)
+        point_x, point_y = sobol['x'].pop(), sobol['y'].pop()
         circle_graph['x'].append(point_x)
         circle_graph['y'].append(point_y)
         if point_x**2 + point_y**2 <= 1:  # if point is inside unit circle
@@ -138,7 +129,7 @@ if __name__ == '__main__':
     line = (quasi_circle_line, quasi_graph_line)
     key_list = ['sc_list', 'circle_graph', 'pi_graph']
     quasi_plot_detail = dict(
-        zip(key_list, get_plot_details(func=quasi_points, sobol=sobol_points)))
+        zip(key_list, get_plot_details(sobol_points)))
     graph = quasi_graph
     fargs = (quasi_plot_detail, graph)
     ani = FuncAnimation(fig,
